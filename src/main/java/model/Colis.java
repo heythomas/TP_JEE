@@ -24,7 +24,7 @@ public class Colis implements Serializable{
 	private String emplacement;
 	private String etat;
 	
-	public void Colis(double poids,double valeur,String origine,String destination,double latitude,double longitude,String emplacement,String etat) {
+	public Colis(double poids,double valeur,String origine,String destination,double latitude,double longitude,String emplacement,String etat) {
 		this.poids = poids;
 		this.valeur = valeur;
 		this.origine = origine;
@@ -32,7 +32,7 @@ public class Colis implements Serializable{
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.emplacement = emplacement;
-		this.etat = etat;		
+		this.etat = etat;
 	}
 
 	public double getPoids() {
