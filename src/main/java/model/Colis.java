@@ -9,9 +9,8 @@ public class Colis implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	// Infos permanentes
-	@Id
-	@GeneratedValue
-	private int id;
+	@Id	@GeneratedValue
+	private long id;
 	
 	private double poids;
 	private double valeur;
@@ -23,6 +22,10 @@ public class Colis implements Serializable{
 	private double longitude;
 	private String emplacement;
 	private String etat;
+	
+	public Colis() {
+		super();
+	}
 	
 	public Colis(double poids,double valeur,String origine,String destination,double latitude,double longitude,String emplacement,String etat) {
 		this.poids = poids;
@@ -103,7 +106,7 @@ public class Colis implements Serializable{
 		return serialVersionUID;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
