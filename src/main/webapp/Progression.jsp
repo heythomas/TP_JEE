@@ -7,6 +7,7 @@
 <title>Progression</title>
 </head>
 <body>
+	<h1>Changer les coordonées d'un colis</h1>
 	<form action="./UpdateColisServlet" method="get">
 		<label for="iden">Votre référence de colis:</label>
 		<input type="text" name="id" id="iden"><br/>

@@ -7,6 +7,7 @@
 <title>Enregistrement</title>
 </head>
 <body>
+	<h1>Enregistrer un colis</h1>
 	<form action="./EnregistrementColisServlet" method="get">
 		<label for="poids">Poids:</label>
 		<input type="text" name="poids" id="poids"><br/>

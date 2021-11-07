@@ -7,6 +7,7 @@
 <title>Suivi Colis</title>
 </head>
 <body>
+	<h1>Suivre votre colis</h1>
 	<form action="./FindColisServlet" method="get">
 		<label for="iden">Votre référence de colis:</label>
 		<input type="text" name="id" id="iden"><br/>
