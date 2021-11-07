@@ -9,7 +9,7 @@
 <body>
 	<form action="./FindColisServlet" method="get">
 		<label for="iden">Votre référence de colis:</label>
-		<input type="text" name="id" id="iden">
+		<input type="text" name="id" id="iden"><br/>
 		<input type="submit" value="Chercher Colis">
 	</form>
 </body>

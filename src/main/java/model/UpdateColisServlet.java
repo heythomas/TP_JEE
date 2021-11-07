@@ -35,9 +35,10 @@ public class UpdateColisServlet extends HttpServlet {
 		double latitude = Double.parseDouble(request.getParameter("latitude"));
 		double longitude = Double.parseDouble(request.getParameter("longitude"));
 		String emplacement = request.getParameter("emplacement");
+		String etat = request.getParameter("etat");
 		
 		// Update du colis et récupération de la nouvelle version
-		Colis c = ejb.updateColis(id, longitude, latitude, emplacement);
+		Colis c = ejb.updateColis(id, longitude, latitude, emplacement, etat);
 		request.setAttribute("colis", c);
 		
 		request.getRequestDispatcher("/showColis.jsp").forward(request, response);

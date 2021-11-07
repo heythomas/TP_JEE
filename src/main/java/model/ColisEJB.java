@@ -28,11 +28,12 @@ public class ColisEJB implements ColisEJBITF {
 	}
 
 	@Override
-	public Colis updateColis(long id, double longitude, double latitude, String emplacement) {
+	public Colis updateColis(long id, double longitude, double latitude, String emplacement, String etat) {
 		Colis c = em.find(Colis.class, id);
 		c.setLatitude(latitude);
 		c.setLongitude(longitude);
 		c.setEmplacement(emplacement);
+		c.setEtat(etat);
 		em.flush();
 		c = em.find(Colis.class, id);
 		return c;
