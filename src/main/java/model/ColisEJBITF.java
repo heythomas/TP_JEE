@@ -1,5 +1,6 @@
 package model;
 
+// Interface de l'EJB
 public interface ColisEJBITF {
 
 	Colis addColis(double poids, double valeur, String origine, String destination, double latitude, double longitude, String emplacement, String etat);

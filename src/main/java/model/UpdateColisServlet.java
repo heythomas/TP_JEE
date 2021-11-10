@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class UpdateColisServlet
- */
+// Cette servlet permet de modifier les données de localisation des colis
 @WebServlet("/UpdateColisServlet")
 public class UpdateColisServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -19,36 +17,27 @@ public class UpdateColisServlet extends HttpServlet {
 	@EJB
 	private ColisEJBITF ejb;
 	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public UpdateColisServlet() {
         super();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Récupération des paramètres
+		// Récupération des paramètres via l'URL
 		long id = Long.parseLong(request.getParameter("id"));
 		double latitude = Double.parseDouble(request.getParameter("latitude"));
 		double longitude = Double.parseDouble(request.getParameter("longitude"));
 		String emplacement = request.getParameter("emplacement");
 		String etat = request.getParameter("etat");
 		
-		// Update du colis et récupération de la nouvelle version
+		// Modification des colis via les données récupérées
 		Colis c = ejb.updateColis(id, longitude, latitude, emplacement, etat);
-		request.setAttribute("colis", c);
 		
+		// Redirection vers la page de visualisation du colis modifié
+		request.setAttribute("colis", c);
 		request.getRequestDispatcher("/showColis.jsp").forward(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -3,12 +3,13 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+// Classe colis serializable, la donnée stockée du projet
 @Entity
 public class Colis implements Serializable{
 	// UID
 	private static final long serialVersionUID = 1L;
 
-	// Infos permanentes
+	// Paramètres permanents
 	@Id	@GeneratedValue
 	private long id;
 	
@@ -17,7 +18,7 @@ public class Colis implements Serializable{
 	private String origine;
 	private String destination;
 	
-	// Infos modifiables
+	// Paramètres modifiables
 	private double latitude;
 	private double longitude;
 	private String emplacement;

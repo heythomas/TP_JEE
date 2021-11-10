@@ -9,42 +9,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class FindColisServlet
- */
+// Cette servlet permet de trouver un colis
 @WebServlet("/FindColisServlet")
 public class FindColisServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	@EJB
 	private ColisEJBITF ejb;
-	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public FindColisServlet() {
         super();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Récupération ID
+		// Récupération de l'id du colis via l'URL
 		long id = Long.parseLong(request.getParameter("id"));
 		
-		// Récupération Objet de la DB
+		// Récupération du colis dans la DB
 		Colis c = ejb.findColis(id);
-		request.setAttribute("colis", c);
 		
+		// Redirection vers la page de visualisation du colis trouvé
+		request.setAttribute("colis", c);
 		request.getRequestDispatcher("/showColis.jsp").forward(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

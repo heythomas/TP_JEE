@@ -9,29 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class EnregistrementColisServlet
- */
+// Cette servlet crée un nouveau colis
 @WebServlet("/EnregistrementColisServlet")
 public class EnregistrementColisServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	@EJB
 	private ColisEJBITF ejb;
-	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public EnregistrementColisServlet() {
         super();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// Récupération des paramètres
+		// Récupération des paramètres via l'URL
 		double poids = Double.parseDouble(request.getParameter("poids"));
 		double valeur = Double.parseDouble(request.getParameter("valeur"));
 		String origine = request.getParameter("origine");
@@ -41,18 +33,15 @@ public class EnregistrementColisServlet extends HttpServlet {
 		String emplacement = request.getParameter("emplacement");
 		String etat = request.getParameter("etat");
 		
-		// Ajout du colis en DB
+		// Ajout du colis en DB via les méthodes de l'EJB
 		Colis c = ejb.addColis(poids, valeur, origine, destination, latitude, longitude, emplacement, etat);
-		request.setAttribute("colis", c);
 		
+		// Redirection vers la page de visualisation du colis nouvellement créé
+		request.setAttribute("colis", c);
 		request.getRequestDispatcher("/showColis.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
